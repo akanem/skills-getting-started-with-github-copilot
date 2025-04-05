@@ -106,9 +106,11 @@ def signup_for_activity(activity_name: str, email: str):
     activity["participants"].append(email)
     return {"message": f"Signed up {email} for {activity_name}"}
 
+class Participant(BaseModel):
+    email: str
 
 @app.post("/activities/{activity_name}/remove")
-def remove_participant(activity_name: str, email: str):
+def remove_participant(activity_name: str, participant: Participant = Body(...)):
     """Remove a participant from an activity"""
     # Validate activity exists
     if activity_name not in activities:
