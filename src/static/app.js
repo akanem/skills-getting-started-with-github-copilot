@@ -1,4 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const darkModeToggle = document.createElement("button");
+  darkModeToggle.id = "dark-mode-toggle";
+  darkModeToggle.textContent = "Toggle Dark Mode";
+  darkModeToggle.style.position = "absolute";
+  darkModeToggle.style.top = "10px";
+  darkModeToggle.style.right = "10px";
+  document.body.appendChild(darkModeToggle);
+
+  // Add event listener to toggle dark mode
+  darkModeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Add dark mode styles
+  const style = document.createElement("style");
+  style.textContent = `
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode .activity-card {
+      background-color: #1e1e1e;
+      border: 1px solid #ffffff;
+    }
+    .dark-mode button {
+      background-color: #333333;
+      color: #ffffff;
+    }
+  `;
+  document.head.appendChild(style);
+
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
